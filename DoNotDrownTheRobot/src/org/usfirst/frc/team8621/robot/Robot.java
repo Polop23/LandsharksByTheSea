@@ -1,6 +1,9 @@
 
 package org.usfirst.frc.team8621.robot;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -9,6 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team8621.robot.commands.ExampleCommand;
+import org.usfirst.frc.team8621.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team8621.robot.subsystems.ExampleSubsystem;
 
 /**
@@ -25,6 +29,10 @@ public class Robot extends IterativeRobot {
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
+	
+	public static final DriveTrain driveTrain = new DriveTrain();
+	public static final AnalogGyro gyro = new AnalogGyro(0);
+	public static final boolean FLM = new Boolean(false);
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -33,6 +41,11 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
+		gyro.calibrate();
+		
+		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+		camera.setResolution(1, 1);
+		
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
@@ -104,6 +117,11 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		
+		double gyroAngle = gyro.getAngle();
+		SmartDashboard.putNumber("Gyro Angle", gyroAngle);
+		//boolean FLMM = FLM.getBooleanProperty("FLM", fa
+		//SmartDashboard.putBoolean("Front Left Motor", value);
 	}
 
 	/**

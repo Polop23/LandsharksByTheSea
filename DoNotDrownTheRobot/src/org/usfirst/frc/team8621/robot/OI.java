@@ -1,5 +1,6 @@
 package org.usfirst.frc.team8621.robot;
 
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 
 import org.usfirst.frc.team8621.robot.commands.ExampleCommand;
@@ -9,6 +10,12 @@ import org.usfirst.frc.team8621.robot.commands.ExampleCommand;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+	
+	public static XboxController xboxController1 = new XboxController(0);
+	
+	public static XboxController xboxController2 = new XboxController(1);
+	
+}
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	//// joystick.
@@ -36,4 +43,4 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
-}
+
