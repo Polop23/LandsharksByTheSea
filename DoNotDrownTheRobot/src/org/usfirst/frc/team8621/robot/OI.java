@@ -2,8 +2,10 @@ package org.usfirst.frc.team8621.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team8621.robot.commands.ExampleCommand;
+import org.usfirst.frc.team8621.robot.commands.RollerUp;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -14,8 +16,16 @@ public class OI {
 	public static XboxController xboxController1 = new XboxController(0);
 	
 	public static XboxController xboxController2 = new XboxController(1);
+	//Button button4 = new XboxController();
 	
+	
+	public OI {
+		
+		button4.whileHeld(new RollerUp());
+	}
 }
+
+
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	//// joystick.
