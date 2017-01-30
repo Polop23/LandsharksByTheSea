@@ -13,11 +13,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class OI {
 
-    public static XboxController xboxController1 = new XboxController(0);
-    public static XboxController xboxController2 = new XboxController(1);
-    // TODO:get better names
-    Button button13 = new JoystickButton(xboxController2, 3);
-    Button button12 = new JoystickButton(xboxController2, 2);
+    public static XboxController xboxController0 = new XboxController(0);
+    public static XboxController xboxController1 = new XboxController(1);
+    Button button13 = new JoystickButton(xboxController1, 3);
+    Button button12 = new JoystickButton(xboxController1, 2);
 
     public OI() {
 

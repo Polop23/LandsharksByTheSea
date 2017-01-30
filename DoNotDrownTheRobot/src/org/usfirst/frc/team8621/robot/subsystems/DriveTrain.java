@@ -52,12 +52,12 @@ public class DriveTrain extends Subsystem {
      * 0){ return true; }else{ return false; } }
      */
 
-    public void DriveWithController(XboxController xboxController1) {
+    public void DriveWithController(XboxController xboxController) {
 
 	// turnDamp = SmartDashboard.getNumber("Turn Damp", 0.5);
 	// speedDamp = SmartDashboard.getNumber("Speed Damp", 0.5);
 
-	robotDrive.arcadeDrive(xboxController1.getX(Hand.kLeft), xboxController1.getY(Hand.kRight), true);
+	robotDrive.arcadeDrive(xboxController.getX(Hand.kLeft), xboxController.getY(Hand.kRight), true);
 
     }
 
