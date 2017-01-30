@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team8621.robot.commands.ExampleCommand;
+import org.usfirst.frc.team8621.robot.commands.RollerUp;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -14,14 +15,16 @@ public class OI {
 	
 	public static XboxController xboxController1 = new XboxController(0);
 	public static XboxController xboxController2 = new XboxController(1);
+	Button button4 = new JoystickButton(xboxController2, 2);
 	
-	Button button3 = new JoystickButton(xboxController2, 1);
 	
 	OI() {
-	    button3.whileHeld(new ExampleCommand());
+		
+		button4.whileHeld(new RollerUp());
 	}
-	
 }
+
+
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	//// joystick.

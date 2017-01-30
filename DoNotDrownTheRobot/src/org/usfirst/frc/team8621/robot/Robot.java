@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team8621.robot.commands.ExampleCommand;
 import org.usfirst.frc.team8621.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team8621.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team8621.robot.subsystems.Roller;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -33,6 +34,8 @@ public class Robot extends IterativeRobot {
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static final AnalogGyro gyro = new AnalogGyro(0);
 	public static final boolean FLM = new Boolean(false);
+	public static final Roller crollerUp = new Roller();
+	public static final Roller crollerDown = new Roller();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -116,12 +119,14 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		Scheduler.getInstance().run();
+		
 		
 		double gyroAngle = gyro.getAngle();
 		SmartDashboard.putNumber("Gyro Angle", gyroAngle);
 		//boolean FLMM = FLM.getBooleanProperty("FLM", fa
 		//SmartDashboard.putBoolean("Front Left Motor", value);
+		Scheduler.getInstance().run();
+		
 	}
 
 	/**
