@@ -34,8 +34,8 @@ public class Robot extends IterativeRobot {
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static final AnalogGyro gyro = new AnalogGyro(0);
 	public static final boolean FLM = new Boolean(false);
-	public static final Roller crollerUp = new Roller();
-	public static final Roller crollerDown = new Roller();
+	public static final Roller cRollerUp = new Roller();
+	public static final Roller cRollerDown = new Roller();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -47,7 +47,8 @@ public class Robot extends IterativeRobot {
 		gyro.calibrate();
 		
 		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-		camera.setResolution(1, 1);
+		camera.setResolution(2400, 980);
+		//TODO change numbers to fit better
 		
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());

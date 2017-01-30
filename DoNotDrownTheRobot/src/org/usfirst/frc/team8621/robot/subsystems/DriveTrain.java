@@ -61,16 +61,14 @@ public class DriveTrain extends Subsystem {
     	//turnDamp = SmartDashboard.getNumber("Turn Damp", 0.5);
     	//speedDamp = SmartDashboard.getNumber("Speed Damp", 0.5);
     	
-    	robotDrive.arcadeDrive(xboxController1.getX(Hand.kLeft), xboxController1.getY(Hand.kRight), squaredInputs(true));
+    	robotDrive.arcadeDrive(xboxController1.getX(Hand.kLeft), xboxController1.getY(Hand.kRight), true);
     	
     	
     	
     
     }
-	private boolean squaredInputs(boolean b) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
+	
 	
 }
 

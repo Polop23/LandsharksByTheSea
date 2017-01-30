@@ -19,7 +19,7 @@ public class OI {
 	Button button12 = new JoystickButton(xboxController2, 2);
 	
 	
-	OI() {
+	public OI() {
 		
 		button13.whileHeld(new RollerUp());
 		button12.whileHeld(new RollerDown());

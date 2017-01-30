@@ -23,21 +23,21 @@ public class Roller extends Subsystem {
     	
     }
     
-    //@SuppressWarnings("deprecation")
+    
 	public void rollerUP() {
-    	if ((SmartDashboard.getDouble("Roller Speed Up", 0.5))<.99||(SmartDashboard.getDouble("Roller Speed Up", 0.5))>0.05) {
-    	rollerSpeedUp = SmartDashboard.getDouble("Roller Speed Up", 0.5);
+    	if ((SmartDashboard.getNumber("Roller Speed Up", 0.5))<.99||(SmartDashboard.getNumber("Roller Speed Up", 0.5))>0.05) {
+    	rollerSpeedUp = SmartDashboard.getNumber("Roller Speed Up", 0.5);
     	}else{
     		rollerSpeedUp = 0.5;
     	}
     	rollerMotor.set(rollerSpeedUp);
     }
     
-	//@SupressWarnings("depreciation")
+	
     public void rollerDown() {
     	
-    	if ((SmartDashboard.getDouble("Roller Speed Down", 0.5))<.99||(SmartDashboard.getDouble("Roller Speed Down", 0.5))>0.05) {
-        	rollerSpeedDown = SmartDashboard.getDouble("Roller Speed Down", 0.5);
+    	if ((SmartDashboard.getNumber("Roller Speed Down", 0.5))<.99||(SmartDashboard.getNumber("Roller Speed Down", 0.5))>0.05) {
+        	rollerSpeedDown = SmartDashboard.getNumber("Roller Speed Down", 0.5);
         	}else{
         		rollerSpeedDown = 0.5;
         	}
