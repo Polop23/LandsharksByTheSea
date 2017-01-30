@@ -21,8 +21,8 @@ public class OI {
 
     public OI() {
 
-	button13.whileHeld(new RollerMove(SmartDashboard.getNumber("Roller speed down", -0.5), 0.9));
-	button12.whileHeld(new RollerMove(SmartDashboard.getNumber("Roller speed up", 0.5), 0.9));
+	button13.whileHeld(new RollerMove(SmartDashboard.getNumber("Roller speed down", -0.5)));
+	button12.whileHeld(new RollerMove(SmartDashboard.getNumber("Roller speed up", 0.5)));
 
     }
 }

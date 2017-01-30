@@ -11,11 +11,10 @@ public class RollerMove extends Command {
     
     double speed;
 
-    public RollerMove(double speed, double time) {
+    public RollerMove(double speed) {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 	requires(Robot.Roller);
-	setTimeout(time);
 	this.speed = speed;
     }
 
@@ -30,7 +29,7 @@ public class RollerMove extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-	return isTimedOut();
+	return false;
     }
 
     // Called once after isFinished returns true
