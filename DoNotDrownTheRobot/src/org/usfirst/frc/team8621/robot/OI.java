@@ -1,11 +1,11 @@
 package org.usfirst.frc.team8621.robot;
 
+import org.usfirst.frc.team8621.robot.commands.RollerMove;
+
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-
-import org.usfirst.frc.team8621.robot.commands.RollerDown;
-import org.usfirst.frc.team8621.robot.commands.RollerUp;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -21,8 +21,8 @@ public class OI {
 
     public OI() {
 
-	button13.whileHeld(new RollerUp());
-	button12.whileHeld(new RollerDown());
+	button13.whileHeld(new RollerMove(SmartDashboard.getNumber("Roller speed down", -0.5), 0.9));
+	button12.whileHeld(new RollerMove(SmartDashboard.getNumber("Roller speed up", 0.5), 0.9));
 
     }
 }

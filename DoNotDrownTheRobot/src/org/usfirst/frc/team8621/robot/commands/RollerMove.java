@@ -7,18 +7,21 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class RollerDown extends Command {
+public class RollerMove extends Command {
+    
+    double speed;
 
-    public RollerDown() {
+    public RollerMove(double speed, double time) {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
-	requires(Robot.cRollerDown);
-	setTimeout(.9);
+	requires(Robot.Roller);
+	setTimeout(time);
+	this.speed = speed;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-	Robot.cRollerDown.rollerDown();
+	Robot.Roller.rollerMove(speed);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -32,7 +35,7 @@ public class RollerDown extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-	Robot.cRollerDown.rollerStop();
+	Robot.Roller.rollerStop();
     }
 
     // Called when another command which requires one or more of the same
