@@ -2,6 +2,7 @@ package org.usfirst.frc.team8621.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team8621.robot.commands.ExampleCommand;
 
@@ -12,8 +13,13 @@ import org.usfirst.frc.team8621.robot.commands.ExampleCommand;
 public class OI {
 	
 	public static XboxController xboxController1 = new XboxController(0);
-	
 	public static XboxController xboxController2 = new XboxController(1);
+	
+	Button button3 = new JoystickButton(xboxController2, 1);
+	
+	OI() {
+	    button3.whileHeld(new ExampleCommand());
+	}
 	
 }
 	//// CREATING BUTTONS
