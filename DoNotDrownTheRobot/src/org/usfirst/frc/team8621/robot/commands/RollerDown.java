@@ -10,15 +10,15 @@ import edu.wpi.first.wpilibj.command.Command;
 public class RollerDown extends Command {
 
     public RollerDown() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.cRollerDown);
-    	setTimeout(.9);
+	// Use requires() here to declare subsystem dependencies
+	// eg. requires(chassis);
+	requires(Robot.cRollerDown);
+	setTimeout(.9);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.cRollerDown.rollerDown();
+	Robot.cRollerDown.rollerDown();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -27,17 +27,17 @@ public class RollerDown extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return isTimedOut();
+	return isTimedOut();
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.cRollerDown.rollerStop();
+	Robot.cRollerDown.rollerStop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
+	end();
     }
 }
