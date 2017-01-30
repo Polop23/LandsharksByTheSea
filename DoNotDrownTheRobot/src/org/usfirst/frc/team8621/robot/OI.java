@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
-import org.usfirst.frc.team8621.robot.commands.ExampleCommand;
+import org.usfirst.frc.team8621.robot.commands.RollerDown;
 import org.usfirst.frc.team8621.robot.commands.RollerUp;
 
 /**
@@ -15,12 +15,15 @@ public class OI {
 	
 	public static XboxController xboxController1 = new XboxController(0);
 	public static XboxController xboxController2 = new XboxController(1);
-	Button button4 = new JoystickButton(xboxController2, 2);
+	Button button13 = new JoystickButton(xboxController2, 3);
+	Button button12 = new JoystickButton(xboxController2, 2);
 	
 	
 	OI() {
 		
-		button4.whileHeld(new RollerUp());
+		button13.whileHeld(new RollerUp());
+		button12.whileHeld(new RollerDown());
+		
 	}
 }
 
