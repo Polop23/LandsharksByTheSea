@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team8621.robot.commands.DriveAuto;
 import org.usfirst.frc.team8621.robot.commands.ExampleCommand;
 import org.usfirst.frc.team8621.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team8621.robot.subsystems.ExampleSubsystem;
@@ -46,10 +47,11 @@ public class Robot extends IterativeRobot {
 	gyro.calibrate();
 
 	UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-	//TODO: change numbers to fit better
+	//TODO: change numbers to actual resolution
 	camera.setResolution(2400, 980);	
 
 	chooser.addDefault("Default Auto", new ExampleCommand());
+	chooser.addObject("BaselineAuto", new DriveAuto(SmartDashboard.getNumber("Speed forward", .5), SmartDashboard.getNumber("Speed Backward", .5), SmartDashboard.getNumber("Time", .5)));
 	// chooser.addObject("My Auto", new MyAutoCommand());
 	SmartDashboard.putData("Auto mode", chooser);
     }

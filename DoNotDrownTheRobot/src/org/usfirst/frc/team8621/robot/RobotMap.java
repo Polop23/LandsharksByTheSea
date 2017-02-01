@@ -1,6 +1,5 @@
 package org.usfirst.frc.team8621.robot;
 
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 /**

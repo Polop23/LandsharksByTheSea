@@ -2,7 +2,6 @@ package org.usfirst.frc.team8621.robot.subsystems;
 
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -10,9 +9,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Roller extends Subsystem {
 
     VictorSP rollerMotor;
-
-    double rollerSpeedUp;
-    double rollerSpeedDown;
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.

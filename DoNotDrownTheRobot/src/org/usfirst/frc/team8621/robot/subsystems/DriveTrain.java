@@ -20,6 +20,9 @@ public class DriveTrain extends Subsystem {
     VictorSP backLeftMotor;
     VictorSP backRightMotor;
     RobotDrive robotDrive;
+    
+    double speedF;
+    double speedT;
 
     // double turnDamp = 0.5;
     // double speedDamp = 0.5;
@@ -51,14 +54,26 @@ public class DriveTrain extends Subsystem {
      * ||xboxController1.getY(Hand.kRight)>0||xboxController1.getY(Hand.kRight)<
      * 0){ return true; }else{ return false; } }
      */
-
+    //TODO: funtions dont start with capitals
     public void DriveWithController(XboxController xboxController) {
 
 	// turnDamp = SmartDashboard.getNumber("Turn Damp", 0.5);
 	// speedDamp = SmartDashboard.getNumber("Speed Damp", 0.5);
+    	
+    speedF = xboxController.getY(Hand.kRight);
+    speedT = xboxController.getX(Hand.kLeft);
+    
+	robotDrive.arcadeDrive(speedF, speedT, true);
 
-	robotDrive.arcadeDrive(xboxController.getX(Hand.kLeft), xboxController.getY(Hand.kRight), true);
-
+    }
+    
+    public void AutoDrive(double speedF, double speedT) {
+    	robotDrive.arcadeDrive(speedF, speedT);
+    }
+    
+    public void Stop() {
+    	
+    	robotDrive.arcadeDrive(0, 0);
     }
 
 }
