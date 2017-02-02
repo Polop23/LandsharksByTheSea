@@ -44,8 +44,7 @@ public class Robot extends IterativeRobot {
 	gyro.calibrate();
 
 	UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-	//TODO: change numbers to actual resolution
-	camera.setResolution(2400, 980);	
+	camera.setResolution(1280, 720);	
 
 	//chooser.addDefault("Default Auto", new ExampleCommand());
 	chooser.addObject("BaselineAuto", new DriveAuto(SmartDashboard.getNumber("Speed forward", .5), SmartDashboard.getNumber("Speed Backward", .5), SmartDashboard.getNumber("Time", .5)));
