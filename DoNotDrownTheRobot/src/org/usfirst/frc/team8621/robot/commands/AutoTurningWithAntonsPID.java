@@ -2,38 +2,52 @@ package org.usfirst.frc.team8621.robot.commands;
 
 import org.usfirst.frc.team8621.robot.Robot;
 
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class DriveAuto extends Command {
+public class AutoTurningWithAntonsPID extends Command {
 	
-	double speedAF;
-	double speedAT;
+	double speedF;
+	double speedT;
+	AnalogGyro gyro = new AnalogGyro(0);
+	double gyroAngle = gyro.getAngle();
+	double setGyroAngle = SmartDashboard.getNumber("Anton's PID Turning Angle", 90);
+	
 
-    public DriveAuto(double speedF, double speedT, double T) {
+    public AutoTurningWithAntonsPID(double speedF, double speedT, double T) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.driveTrain);
     	setTimeout(T);
-    	this.speedAF = speedF;
-    	this.speedAT = speedT;
+    	this.speedF = speedF;
+    	this.speedT = speedT;
+    	
+    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.driveTrain.AutoDrive(speedAF, speedAT);
+    	Robot.driveTrain.AutoTurning1(speedF, speedT);
+    	gyro.calibrate();
     	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double angleCompletedPercent = ((setGyroAngle - gyroAngle)/setGyroAngle);
+    	Robot.driveTrain.AutoTurning1(0,(speedT-(speedT*angleCompletedPercent)));
+    	
+    	
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return (setGyroAngle == gyroAngle);
     }
 
     // Called once after isFinished returns true

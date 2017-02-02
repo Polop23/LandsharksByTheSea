@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -68,6 +67,10 @@ public class DriveTrain extends Subsystem {
     }
     
     public void AutoDrive(double speedF, double speedT) {
+    	robotDrive.arcadeDrive(speedF, speedT);
+    }
+    
+    public void AutoTurning1(double speedF, double speedT ) {
     	robotDrive.arcadeDrive(speedF, speedT);
     }
     
