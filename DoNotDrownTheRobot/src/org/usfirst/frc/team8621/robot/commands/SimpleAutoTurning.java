@@ -9,8 +9,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class AutoTurningWithAntonsPID extends Command {
-	
+public class SimpleAutoTurning extends Command {
+
 	double speedF;
 	double speedT;
 	AnalogGyro gyro = new AnalogGyro(0);
@@ -18,10 +18,11 @@ public class AutoTurningWithAntonsPID extends Command {
 	double setGyroAngle = SmartDashboard.getNumber("Turning Angle", 90);
 	
 
-    public AutoTurningWithAntonsPID(double speedF, double speedT) {
+    public SimpleAutoTurning(double speedF, double speedT) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.driveTrain);
+    	//setTimeout(T);
     	this.speedF = speedF;
     	this.speedT = speedT;
     	
@@ -30,18 +31,12 @@ public class AutoTurningWithAntonsPID extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.driveTrain.AutoTurning(speedF, speedT);
+    	Robot.driveTrain.AutoTurning(0, 1);
     	gyro.calibrate();
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double angleCompletedPercent = ((setGyroAngle - gyroAngle)/setGyroAngle);
-    	Robot.driveTrain.AutoTurning(0,(speedT-(speedT*angleCompletedPercent)));
-    	
-    	
-    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

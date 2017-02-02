@@ -70,7 +70,7 @@ public class DriveTrain extends Subsystem {
     	robotDrive.arcadeDrive(speedF, speedT);
     }
     
-    public void AutoTurning1(double speedF, double speedT ) {
+    public void AutoTurning(double speedF, double speedT ) {
     	robotDrive.arcadeDrive(speedF, speedT);
     }
     
