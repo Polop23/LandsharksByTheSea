@@ -31,7 +31,7 @@ public class SimpleAutoTurning extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.driveTrain.AutoTurning(0, 1);
+    	Robot.driveTrain.AutoTurning(0, speedT);
     	gyro.calibrate();
     }
 
