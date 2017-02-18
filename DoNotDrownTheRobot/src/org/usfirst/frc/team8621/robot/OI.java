@@ -1,5 +1,6 @@
 package org.usfirst.frc.team8621.robot;
 
+import org.usfirst.frc.team8621.robot.commands.AutoTurningWithAntonsPID;
 import org.usfirst.frc.team8621.robot.commands.RollerMove;
 
 import edu.wpi.first.wpilibj.XboxController;
@@ -17,12 +18,15 @@ public class OI {
     public static XboxController xboxController1 = new XboxController(1);
     Button button13 = new JoystickButton(xboxController1, 3);
     Button button12 = new JoystickButton(xboxController1, 2);
+    Button button04 = new JoystickButton(xboxController0, 4);
 
     public OI() {
 
 	button13.whileHeld(new RollerMove(SmartDashboard.getNumber("Roller speed down", -0.5)));
 	button12.whileHeld(new RollerMove(SmartDashboard.getNumber("Roller speed up", 0.5)));
-
+	button04.whenPressed(new AutoTurningWithAntonsPID(0, 1));
+	
+	
     }
 }
 

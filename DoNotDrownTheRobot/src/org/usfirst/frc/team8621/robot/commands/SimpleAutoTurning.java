@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class SimpleAutoTurning extends Command {
-	//TODO: test
+	
 	double speedF;
 	double speedT;
 	AnalogGyro gyro = new AnalogGyro(0);
