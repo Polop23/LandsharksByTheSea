@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team8621.robot.commands.DriveAndTurnAuto;
 import org.usfirst.frc.team8621.robot.commands.DriveAuto;
 import org.usfirst.frc.team8621.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team8621.robot.subsystems.Roller;
@@ -47,9 +48,19 @@ public class Robot extends IterativeRobot {
 	camera.setResolution(1280, 720);	
 
 	//chooser.addDefault("Default Auto", new ExampleCommand());
-	chooser.addObject("BaselineAuto", new DriveAuto(SmartDashboard.getNumber("Speed forward", .5), SmartDashboard.getNumber("Speed Backward", .5), SmartDashboard.getNumber("Time", .5)));
-	// chooser.addObject("My Auto", new MyAutoCommand());
 	SmartDashboard.putData("Auto mode", chooser);
+	chooser.addObject("BaselineAuto", new DriveAuto(SmartDashboard.getNumber("Speed forward", .5), SmartDashboard.getNumber("Speed Backward", .5), SmartDashboard.getNumber("Time", .5)));
+	chooser.addObject("Drive and Turn", new DriveAndTurnAuto());
+	// chooser.addObject("My Auto", new MyAutoCommand());
+	
+	
+	SmartDashboard.putNumber("Turning Angle", 90);
+	SmartDashboard.putNumber("Speed forward", 0.5);
+	SmartDashboard.putNumber("Speed Backward", 0.5);
+	SmartDashboard.putNumber("Time", .5);
+	SmartDashboard.putNumber("Turn Damp", 0.5);
+	SmartDashboard.putNumber("Speed Damp", 0.5);
+	
     }
 
     /**

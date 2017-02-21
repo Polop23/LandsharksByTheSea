@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -23,8 +24,8 @@ public class DriveTrain extends Subsystem {
     double speedF;
     double speedT;
 
-    // double turnDamp = 0.5;
-    // double speedDamp = 0.5;
+     double turnDamp;
+     double speedDamp;
 
     public DriveTrain() {
 	frontLeftMotor = new VictorSP(RobotMap.frontLeftMotor);
@@ -56,11 +57,11 @@ public class DriveTrain extends Subsystem {
     //TODO: funtions dont start with capitals
     public void DriveWithController(XboxController xboxController) {
 
-	// turnDamp = SmartDashboard.getNumber("Turn Damp", 0.5);
-	// speedDamp = SmartDashboard.getNumber("Speed Damp", 0.5);
+	turnDamp = SmartDashboard.getNumber("Turn Damp", 0.5);
+	speedDamp = SmartDashboard.getNumber("Speed Damp", 0.5);
     	
-    speedF = xboxController.getY(Hand.kRight);
-    speedT = xboxController.getX(Hand.kLeft);
+    speedF = -1*speedDamp*xboxController.getY(Hand.kRight);
+    speedT = -1*turnDamp*xboxController.getX(Hand.kLeft);
     
 	robotDrive.arcadeDrive(speedF, speedT, true);
 
