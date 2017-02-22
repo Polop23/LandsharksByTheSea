@@ -21,6 +21,7 @@ public class SimpleAutoTurning extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.driveTrain);
+    	//requires(Robot.gyro);
     	//setTimeout(T);
     	this.speedF = speedF;
     	this.speedT = speedT;

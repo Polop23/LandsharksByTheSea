@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class AutoTurningWithAntonsPID extends Command {
 	
+	
 	double speedF;
 	double speedT;
 	//AnalogGyro gyro = new AnalogGyro(0);
@@ -30,7 +31,8 @@ public class AutoTurningWithAntonsPID extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.driveTrain.AutoTurning(speedF, speedT);
-    	gyro.calibrate();
+    	
+    	
     	
     }
 

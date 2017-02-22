@@ -49,7 +49,7 @@ public class Robot extends IterativeRobot {
 
 	//chooser.addDefault("Default Auto", new ExampleCommand());
 	SmartDashboard.putData("Auto mode", chooser);
-	chooser.addObject("BaselineAuto", new DriveAuto(SmartDashboard.getNumber("Speed forward", .5), SmartDashboard.getNumber("Speed Backward", .5), SmartDashboard.getNumber("Time", .5)));
+	chooser.addObject("BaselineAuto", new DriveAuto(SmartDashboard.getNumber("Speed forward", .5), 0, SmartDashboard.getNumber("Time", 0.5)));
 	chooser.addObject("Drive and Turn", new DriveAndTurnAuto());
 	// chooser.addObject("My Auto", new MyAutoCommand());
 	
