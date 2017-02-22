@@ -2,7 +2,6 @@ package org.usfirst.frc.team8621.robot.commands;
 
 import org.usfirst.frc.team8621.robot.Robot;
 
-import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -31,7 +30,7 @@ public class AutoTurningWithAntonsPID extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.driveTrain.AutoTurning(speedF, speedT);
-    	//gyro.calibrate();
+    	gyro.calibrate();
     	
     }
 
