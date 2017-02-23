@@ -31,7 +31,7 @@ public class OI {
     
 
     public OI() {
-
+	//XXX:this may not work how you expect it to
 	button16.whileHeld(new RollerMove(SmartDashboard.getNumber("Roller speed down", -0.5)));
 	button15.whileHeld(new RollerMove(SmartDashboard.getNumber("Roller speed up", 0.5)));
 	button04.whenPressed(new AutoTurningWithAntonsPID(0, 1));

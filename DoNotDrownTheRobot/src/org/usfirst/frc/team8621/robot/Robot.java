@@ -51,6 +51,7 @@ public class Robot extends IterativeRobot {
 
 	//chooser.addDefault("Default Auto", new ExampleCommand());
 	SmartDashboard.putData("Auto mode", chooser);
+	//XXX:this may not work how you expect it to
 	chooser.addObject("BaselineAuto", new DriveAuto(SmartDashboard.getNumber("Speed forward", .5), 0, SmartDashboard.getNumber("Time", 0.5)));
 	chooser.addObject("Drive and Turn", new DriveAndTurnAuto());
 	// chooser.addObject("My Auto", new MyAutoCommand());

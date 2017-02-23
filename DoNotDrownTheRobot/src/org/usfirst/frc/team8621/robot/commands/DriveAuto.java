@@ -9,28 +9,27 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DriveAuto extends Command {
 	
-	double speedAF;
-	double speedAT;
-	double TT;
+	double speedF;
+	double speedT;
 
     public DriveAuto(double speedF, double speedT, double T) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.driveTrain);
-    	this.TT = T;
-    	setTimeout(TT);
-    	this.speedAF = speedF;
-    	this.speedAT = speedT;
+    	setTimeout(T);
+    	this.speedF = speedF;
+    	this.speedT = speedT;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.driveTrain.AutoDrive(speedAF, speedAT);
+    	Robot.driveTrain.AutoDrive(speedF, speedT);
     	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+	//TODO:you have to call drive train in this loop
     }
 
     // Make this return true when this Command no longer needs to run execute()

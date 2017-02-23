@@ -14,7 +14,9 @@ public class AutoTurningWithAntonsPID extends Command {
 	double speedF;
 	double speedT;
 	//AnalogGyro gyro = new AnalogGyro(0);
+	//XXX:this may not work how you expect it to
 	double gyroAngle = Robot.gyro.getAngle();
+	//XXX:this may not work how you expect it to
 	double setGyroAngle = SmartDashboard.getNumber("Turning Angle", 90);
 	
 
@@ -40,8 +42,6 @@ public class AutoTurningWithAntonsPID extends Command {
     protected void execute() {
     	double angleCompletedPercent = ((setGyroAngle - gyroAngle)/setGyroAngle);
     	Robot.driveTrain.AutoTurning(0,(speedT-(speedT*angleCompletedPercent)));
-    	
-    	
     	
     }
 

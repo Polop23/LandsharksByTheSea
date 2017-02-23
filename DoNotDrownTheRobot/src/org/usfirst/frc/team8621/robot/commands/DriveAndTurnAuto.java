@@ -15,6 +15,7 @@ public class DriveAndTurnAuto extends CommandGroup {
         // these will run in order.
     	
     	//TODO: Change these values to be inputted from the smart DASH
+	//XXX:this may not work how you expect it to
     	addSequential(new DriveAuto(1, 0, SmartDashboard.getNumber("Time", 0.5)));
     	addSequential(new AutoTurningWithAntonsPID(0,1));
 
