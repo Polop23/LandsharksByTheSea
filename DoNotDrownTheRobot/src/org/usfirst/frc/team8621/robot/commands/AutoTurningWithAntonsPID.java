@@ -13,8 +13,8 @@ public class AutoTurningWithAntonsPID extends Command {
 	
 	double speedF;
 	double speedT;
-	AnalogGyro gyro = new AnalogGyro(0);
-	double gyroAngle = gyro.getAngle();
+	//AnalogGyro gyro = new AnalogGyro(0);
+	double gyroAngle = Robot.gyro.getAngle();
 	double setGyroAngle = SmartDashboard.getNumber("Turning Angle", 90);
 	
 

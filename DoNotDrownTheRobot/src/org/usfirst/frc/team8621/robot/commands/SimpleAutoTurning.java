@@ -13,8 +13,8 @@ public class SimpleAutoTurning extends Command {
 	
 	double speedF;
 	double speedT;
-	AnalogGyro gyro = new AnalogGyro(0);
-	double gyroAngle = gyro.getAngle();
+	//AnalogGyro gyro = new AnalogGyro(0);
+	double gyroAngle = Robot.gyro.getAngle();
 	double setGyroAngle = SmartDashboard.getNumber("Turning Angle", 90);
 	
 
@@ -32,7 +32,7 @@ public class SimpleAutoTurning extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.driveTrain.AutoTurning(0, speedT);
-    	gyro.calibrate();
+    	//gyro.calibrate();
     }
 
     // Called repeatedly when this Command is scheduled to run
