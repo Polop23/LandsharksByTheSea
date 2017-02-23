@@ -34,7 +34,7 @@ public class AutoTurningWithAntonsPID extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.driveTrain.AutoTurning(speedF, speedT);
-    	setGyroAngle = SmartDashboard.getNumber("Turning Angle", 90);
+    	setGyroAngle = 90;//SmartDashboard.getNumber("Turning Angle", 90);
     	
     	
     }
@@ -53,7 +53,7 @@ public class AutoTurningWithAntonsPID extends Command {
     	if (setGyroAngle == Robot.gyro.getAngle()){
     		error = true;
     		
-    	} else if (setGyroAngle+2 <= Robot.gyro.getAngle()||setGyroAngle-2 >= Robot.gyro.getAngle()){
+    	} else if (setGyroAngle+2 >= Robot.gyro.getAngle()||setGyroAngle-2 <= Robot.gyro.getAngle()){
     		error = true;
     	} else{
     		error = false;
