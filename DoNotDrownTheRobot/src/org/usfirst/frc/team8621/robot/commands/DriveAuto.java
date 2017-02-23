@@ -11,12 +11,14 @@ public class DriveAuto extends Command {
 	
 	double speedAF;
 	double speedAT;
+	double TT;
 
     public DriveAuto(double speedF, double speedT, double T) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.driveTrain);
-    	setTimeout(T);
+    	this.TT = T;
+    	setTimeout(TT);
     	this.speedAF = speedF;
     	this.speedAT = speedT;
     }
@@ -33,7 +35,7 @@ public class DriveAuto extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+       return isTimedOut();
     }
 
     // Called once after isFinished returns true
