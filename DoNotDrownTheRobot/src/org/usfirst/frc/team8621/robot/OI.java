@@ -1,6 +1,7 @@
 package org.usfirst.frc.team8621.robot;
 
 import org.usfirst.frc.team8621.robot.commands.AutoTurningWithAntonsPID;
+import org.usfirst.frc.team8621.robot.commands.GryoCalibration;
 import org.usfirst.frc.team8621.robot.commands.RollerMove;
 
 import edu.wpi.first.wpilibj.XboxController;
@@ -24,16 +25,18 @@ public class OI {
     //Right Bumper controller 1
     Button button15 = new JoystickButton(xboxController1, 5);
     //Y or triangle button controller 0
-    Button button05 = new JoystickButton(xboxController0, 5);
-    //Left Bumper controller 0
-    Button button06 = new JoystickButton(xboxController0, 6);
+    Button button04 = new JoystickButton(xboxController0, 4);
+    //x or X button controller 0
+    Button button03 = new JoystickButton(xboxController0, 3);
     
 
     public OI() {
 
 	button16.whileHeld(new RollerMove(SmartDashboard.getNumber("Roller speed down", -0.5)));
 	button15.whileHeld(new RollerMove(SmartDashboard.getNumber("Roller speed up", 0.5)));
-	button05.whenPressed(new AutoTurningWithAntonsPID(0, 1));
+	button04.whenPressed(new AutoTurningWithAntonsPID(0, 1));
+	button03.whenPressed(new GryoCalibration());
+	
 	
     }
 }

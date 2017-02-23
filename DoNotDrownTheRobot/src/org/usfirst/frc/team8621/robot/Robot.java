@@ -2,7 +2,8 @@
 package org.usfirst.frc.team8621.robot;
 
 import edu.wpi.cscore.UsbCamera;
-import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+//import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -31,7 +32,8 @@ public class Robot extends IterativeRobot {
     SendableChooser<Command> chooser = new SendableChooser<>();
 
     public static final DriveTrain driveTrain = new DriveTrain();
-    public static final AnalogGyro gyro = new AnalogGyro(0);
+    //public static final AnalogGyro gyro = new AnalogGyro(0);
+    public static final ADXRS450_Gyro gyro = new ADXRS450_Gyro();
     public static final boolean FLM = false;
     public static final Roller Roller = new Roller();
 
@@ -70,7 +72,7 @@ public class Robot extends IterativeRobot {
      */
     @Override
     public void disabledInit() {
-
+    	
     }
 
     @Override
