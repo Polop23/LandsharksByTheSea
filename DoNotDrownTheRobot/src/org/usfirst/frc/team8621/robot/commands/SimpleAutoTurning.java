@@ -41,8 +41,18 @@ public class SimpleAutoTurning extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	//TODO:Set error bounds
-        return (setGyroAngle == gyroAngle);
+    	//TODO:Fixed maybe Set error bounds
+    	boolean error = false;
+    	if (setGyroAngle == Robot.gyro.getAngle()){
+    		error = true;
+    		
+    	} else if (setGyroAngle+2 <= Robot.gyro.getAngle()||setGyroAngle-2 >= Robot.gyro.getAngle()){
+    		error = true;
+    	} else{
+    		error = false;
+    	}
+    	
+        return error;
     }
 
     // Called once after isFinished returns true

@@ -15,9 +15,9 @@ public class AutoTurningWithAntonsPID extends Command {
 	double speedT;
 	//AnalogGyro gyro = new AnalogGyro(0);
 	//XXX:this may not work how you expect it to
-	double gyroAngle = Robot.gyro.getAngle();
+	double gyroAngle;
 	//XXX:this may not work how you expect it to
-	double setGyroAngle = SmartDashboard.getNumber("Turning Angle", 90);
+	double setGyroAngle;
 	
 
     public AutoTurningWithAntonsPID(double speedF, double speedT) {
@@ -28,27 +28,38 @@ public class AutoTurningWithAntonsPID extends Command {
     	this.speedT = speedT;
     	
     	
+    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.driveTrain.AutoTurning(speedF, speedT);
-    	
+    	setGyroAngle = SmartDashboard.getNumber("Turning Angle", 90);
     	
     	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double angleCompletedPercent = ((setGyroAngle - gyroAngle)/setGyroAngle);
+    	double angleCompletedPercent = ((setGyroAngle - Robot.gyro.getAngle())/setGyroAngle);
     	Robot.driveTrain.AutoTurning(0,(speedT-(speedT*angleCompletedPercent)));
     	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	//TODO:Set Angle to be within error bounds
-        return (setGyroAngle == gyroAngle);
+    	//TODO:Fixed Maybe Set Angle to be within error bounds
+    	boolean error = false;
+    	if (setGyroAngle == Robot.gyro.getAngle()){
+    		error = true;
+    		
+    	} else if (setGyroAngle+2 <= Robot.gyro.getAngle()||setGyroAngle-2 >= Robot.gyro.getAngle()){
+    		error = true;
+    	} else{
+    		error = false;
+    	}
+    	
+        return error;
     }
 
     // Called once after isFinished returns true

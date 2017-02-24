@@ -1,7 +1,7 @@
 package org.usfirst.frc.team8621.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -14,13 +14,13 @@ public class DriveAndTurnAuto extends CommandGroup {
         //      addSequential(new Command2());
         // these will run in order.
     	
-    	//TODO: Change these values to be inputted from the smart DASH
-	//XXX:this may not work how you expect it to
-    	addSequential(new DriveAuto(1, 0, SmartDashboard.getNumber("Time", 0.5)));
+    	//TODO:Fixed Maybe Change these values to be inputted from the smart DASH
+    	//this may not work how you expect it to
+    	addSequential(new DriveAuto(1, 0, 4.5));
     	addSequential(new AutoTurningWithAntonsPID(0,1));
 
         // To run multiple commands at the same time,
-        // use addParallel()
+    	// use addParallel()
         // e.g. addParallel(new Command1());
         //      addSequential(new Command2());
         // Command1 and Command2 will run in parallel.
