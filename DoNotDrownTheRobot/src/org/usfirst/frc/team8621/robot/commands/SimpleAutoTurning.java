@@ -41,6 +41,7 @@ public class SimpleAutoTurning extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	//TODO:Set error bounds
         return (setGyroAngle == gyroAngle);
     }
 

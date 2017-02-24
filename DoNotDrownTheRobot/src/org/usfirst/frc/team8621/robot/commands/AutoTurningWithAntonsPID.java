@@ -47,6 +47,7 @@ public class AutoTurningWithAntonsPID extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	//TODO:Set Angle to be within error bounds
         return (setGyroAngle == gyroAngle);
     }
 
