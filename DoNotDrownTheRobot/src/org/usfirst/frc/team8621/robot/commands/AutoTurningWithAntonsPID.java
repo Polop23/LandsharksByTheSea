@@ -42,7 +42,8 @@ public class AutoTurningWithAntonsPID extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double angleCompletedPercent = ((setGyroAngle - Robot.gyro.getAngle())/setGyroAngle);
-    	Robot.driveTrain.AutoTurning(0,(speedT-(speedT*angleCompletedPercent)));
+    	speedT = speedT - (speedT*angleCompletedPercent);
+    	Robot.driveTrain.AutoTurning(0,speedT);
     	
     }
 
