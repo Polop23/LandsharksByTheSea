@@ -15,14 +15,15 @@ public class AutoTurningP extends Command {
 	boolean finished;
 	double turnAngle;
 
-    public AutoTurningP() {
+    public AutoTurningP(){
+    	//add parameters? ex. turn angle
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	turnAngle = 90;
+
     	SmartDashboard.putNumber("Kp", Kp);
         // Use requires() here to declare subsystem dependencies
         requires(Robot.driveTrain);
-        setTimeout(5);
+        setTimeout(10);
     }
 
     // Called just before this Command runs the first time
@@ -30,6 +31,7 @@ public class AutoTurningP extends Command {
     Robot.gyro.reset();
     SmartDashboard.putNumber("Gyro Angle", Robot.gyro.getAngle());
     finished = false;
+    turnAngle = SmartDashboard.getNumber("Turning Angle", 90);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -40,7 +42,7 @@ public class AutoTurningP extends Command {
     	error = Math.sqrt((turnAngle - Robot.gyro.getAngle())/turnAngle);
     	setSpeed = Kp * (error);
     	
-    	if (Math.abs(Robot.gyro.getAngle() - turnAngle) >= 2.5){
+    	if (Math.abs(Robot.gyro.getAngle() - turnAngle) >= 1){
     		if (Math.abs(setSpeed) > 0.4){
     			Robot.driveTrain.AutoTurning(0, setSpeed);
     		}
