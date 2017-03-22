@@ -16,7 +16,7 @@ public class DriveAndTurnAuto extends CommandGroup {
     	
     	//TODO:Fixed Maybe Change these values to be inputted from the smart DASH
     	//this may not work how you expect it to
-    	addSequential(new DriveAuto(.4, 0, 1));
+    	addSequential(new DriveAuto(1, 0, 3));
     	addSequential(new AutoTurningWithAntonsPID(0,1));
 
         // To run multiple commands at the same time,

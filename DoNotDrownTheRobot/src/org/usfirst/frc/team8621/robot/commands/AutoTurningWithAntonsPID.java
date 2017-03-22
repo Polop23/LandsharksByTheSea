@@ -34,18 +34,18 @@ public class AutoTurningWithAntonsPID extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.driveTrain.AutoTurning(speedF, speedT);
-    	setGyroAngle = 90;//SmartDashboard.getNumber("Turning Angle", 90);
+    	setGyroAngle = Robot.gyro.getAngle() + 90;//SmartDashboard.getNumber("Turning Angle", 90);
     	
     	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double angleCompletedPercent = ((Robot.gyro.getAngle())/setGyroAngle);
+    	double angleCompletedPercent = ((setGyroAngle - Robot.gyro.getAngle())/setGyroAngle);
     	speedT = speedT - (speedT*angleCompletedPercent);
     	Robot.driveTrain.AutoTurning(0,speedT);
-    	
-    }
+    }	
+    
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
@@ -62,7 +62,7 @@ public class AutoTurningWithAntonsPID extends Command {
     	
         return error;
     }
-
+    
     // Called once after isFinished returns true
     protected void end() {
     	Robot.driveTrain.Stop();
