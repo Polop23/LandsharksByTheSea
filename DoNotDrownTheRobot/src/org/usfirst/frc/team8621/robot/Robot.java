@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team8621.robot.commands.CrazyTurning;
 import org.usfirst.frc.team8621.robot.commands.DriveAndTurnAuto;
 import org.usfirst.frc.team8621.robot.commands.DriveAndTurnV2;
 import org.usfirst.frc.team8621.robot.commands.DriveAuto;
@@ -58,6 +59,7 @@ public class Robot extends IterativeRobot {
 	chooser.addObject("BaselineAuto", new DriveAuto(.5, 0, 5));
 	chooser.addObject("Drive and Turn", new DriveAndTurnAuto());
 	chooser.addObject("Drive and Turn Auto V2", new DriveAndTurnV2());
+	chooser.addObject("Crazy Turning", new CrazyTurning());
 	// chooser.addObject("My Auto", new MyAutoCommand());
 	
 	

@@ -15,7 +15,7 @@ public class AutoTurningP extends Command {
 	boolean finished;
 	double turnAngle;
 
-    public AutoTurningP(){
+    public AutoTurningP(double timeOut){
     	//add parameters? ex. turn angle
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -23,7 +23,7 @@ public class AutoTurningP extends Command {
     	SmartDashboard.putNumber("Kp", Kp);
         // Use requires() here to declare subsystem dependencies
         requires(Robot.driveTrain);
-        setTimeout(10);
+        setTimeout(timeOut);
     }
 
     // Called just before this Command runs the first time
