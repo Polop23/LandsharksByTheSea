@@ -1,5 +1,7 @@
 package org.usfirst.frc.team8621.robot.commands;
 
+import org.usfirst.frc.team8621.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -8,13 +10,16 @@ import edu.wpi.first.wpilibj.command.Command;
 public class CorrectingDriveAuto extends Command {
 
 	
-	boolean fl;
+    boolean fl;
+    double speedF;
+    double speedT;
+    
     public CorrectingDriveAuto(double speedF, double speedT, double T) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 		// hopefully in the future we can input distance instead of time
 		// and have the code work out the timeout value
-    	requires(DriveTrain);
+    	requires(Robot.driveTrain);
     	setTimeout(T);
     	this.speedF = speedF;
     	this.speedT = speedT;
@@ -33,13 +38,13 @@ public class CorrectingDriveAuto extends Command {
     	if (Robot.gyro.getAngle() <= -1){
     		fl = true;
     	}
-    	if (Robot.gyro.getAngle()) >= 1){
+    	if (Robot.gyro.getAngle() >= 1){
     		fl = false;
     	}
-    	if fl{
-    		Robot.driveTrain.Autoturning(0, -0.5); //imo speedT should be a fixed value here
+    	if (fl){
+    		Robot.driveTrain.AutoTurning(0, -0.5); //imo speedT should be a fixed value here
     	}
-    	if not fl{
+    	if (!fl){
     		Robot.driveTrain.AutoDrive(speedF, speedT);
     	}
     }
