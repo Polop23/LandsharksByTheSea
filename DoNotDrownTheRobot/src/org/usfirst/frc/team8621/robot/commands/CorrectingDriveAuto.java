@@ -7,7 +7,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class CorrectingDriveAuto extends Command {
 
-	boolean fl
+	
+	boolean fl;
     public CorrectingDriveAuto(double speedF, double speedT, double T) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -23,23 +24,23 @@ public class CorrectingDriveAuto extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.gyro.reset();
-    	fl = false // true means it's in the process of turning, false means running
+    	fl = false; // true means it's in the process of turning, false means running
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	// IIRC the robot only diverges to the left, so I'm gonna be lazy here
     	if (Robot.gyro.getAngle() <= -1){
-    		fl = true
+    		fl = true;
     	}
     	if (Robot.gyro.getAngle()) >= 1){
-    		fl = false
+    		fl = false;
     	}
     	if fl{
-    		Robot.driveTrain.Autoturning(0, -0.5) //imo speedT should be a fixed value here
+    		Robot.driveTrain.Autoturning(0, -0.5); //imo speedT should be a fixed value here
     	}
     	if not fl{
-    		Robot.driveTrain.AutoDrive(speedF, speedT)
+    		Robot.driveTrain.AutoDrive(speedF, speedT);
     	}
     }
 
@@ -50,12 +51,12 @@ public class CorrectingDriveAuto extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.driveTrain.Stop()
+    	Robot.driveTrain.Stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end()
+    	end();
     }
 }
