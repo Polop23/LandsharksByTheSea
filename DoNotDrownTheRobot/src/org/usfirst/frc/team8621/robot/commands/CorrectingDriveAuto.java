@@ -3,6 +3,7 @@ package org.usfirst.frc.team8621.robot.commands;
 import org.usfirst.frc.team8621.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -35,18 +36,20 @@ public class CorrectingDriveAuto extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	// IIRC the robot only diverges to the left, so I'm gonna be lazy here
-    	if (Robot.gyro.getAngle() <= -1){
+    	SmartDashboard.putNumber("Gyro Angle", Robot.gyro.getAngle());
+    	if (Robot.gyro.getAngle() <= -2){
     		fl = true;
     	}
-    	if (Robot.gyro.getAngle() >= 1){
+    	if (Robot.gyro.getAngle() >= 0.1){ //to compensate for gyro drift. Works quite well
     		fl = false;
     	}
     	if (fl){
-    		Robot.driveTrain.AutoTurning(0, -0.5); //imo speedT should be a fixed value here
+    		Robot.driveTrain.AutoTurning(0, -0.3); //imo speedT should be a fixed value here
     	}
     	if (!fl){
     		Robot.driveTrain.AutoDrive(speedF, speedT);
     	}
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
