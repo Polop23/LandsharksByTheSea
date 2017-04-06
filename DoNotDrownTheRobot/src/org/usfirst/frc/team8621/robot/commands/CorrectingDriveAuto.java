@@ -40,13 +40,13 @@ public class CorrectingDriveAuto extends Command {
     	if (Robot.gyro.getAngle() <= -2){
     		fl = true;
     	}
-    	if (Robot.gyro.getAngle() >= 0.1){ //to compensate for gyro drift. Works quite well
+    	if (Robot.gyro.getAngle() >= 0.1){ //to compensate for gyro drift. Nope not good
     		fl = false;
     	}
     	if (fl){
     		Robot.driveTrain.AutoTurning(0, -0.3); //imo speedT should be a fixed value here
     	}
-    	if (!fl){
+    	else if (!fl){
     		Robot.driveTrain.AutoDrive(speedF, speedT);
     	}
     	
