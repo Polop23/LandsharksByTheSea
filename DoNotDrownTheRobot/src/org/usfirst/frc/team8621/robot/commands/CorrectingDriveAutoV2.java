@@ -38,16 +38,19 @@ public class CorrectingDriveAutoV2 extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	SmartDashboard.putNumber("Gyro Angle", Robot.gyro.getAngle());
+		if (Robot.gyro.getAngle()<= -1){
+			flg = true;
+		}
+		if (Robot.gyro.getAngle()>= 1){
+			flg = false;
+		}
+		
     	if (!fl){
     		Robot.driveTrain.AutoDrive(speedF, 0);
     	}
     	else {
-    		if (Robot.gyro.getAngle()<= -1){
-    			flg = true;
-    		}
-    		if (Robot.gyro.getAngle()>= 0.5){
-    			flg = false;
-    		}
+
+   
     		if (flg){
     			Robot.driveTrain.AutoTurning(0, -0.202);
     		}
