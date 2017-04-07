@@ -31,14 +31,15 @@ public class CorrectingDriveAutoV2 extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.gyro.reset();
-    	fl = false; // true means it's in the process of turning, false means running
-    	flg= false; //false: slower turn true: faster turn
+    	fl = false; // the code constantly switches between turn and move with fl = !fl
+    	flg= false; //false: slower turn (too much left) 
+    				//true: faster turn (too much right)
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	SmartDashboard.putNumber("Gyro Angle", Robot.gyro.getAngle());
-		if (Robot.gyro.getAngle()<= -1){
+		if (Robot.gyro.getAngle()<= -1ss){
 			flg = true;
 		}
 		if (Robot.gyro.getAngle()>= 1){
@@ -52,7 +53,7 @@ public class CorrectingDriveAutoV2 extends Command {
 
    
     		if (flg){
-    			Robot.driveTrain.AutoTurning(0, -0.202);
+    			Robot.driveTrain.AutoTurning(0, speedT - s0.002);
     		}
     		else{		
     			Robot.driveTrain.AutoTurning(0, speedT);
