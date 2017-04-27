@@ -1,4 +1,4 @@
- package org.usfirst.frc.team8621.robot.commands;
+package org.usfirst.frc.team8621.robot.commands;
 
 import org.usfirst.frc.team8621.robot.Robot;
 
@@ -8,34 +8,55 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class CorrectingDriveAuto extends Command {
-
+public class CorrectingTank extends Command {
 	
-    boolean fl;
-    double speedF;
-    double speedT;
-    
-    public CorrectingDriveAuto(double speedF, double T) {
+	 boolean fl;
+	 boolean flg;
+	double left;
+	double right;
+	
+
+    public CorrectingTank(double left, double right) {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-		// hopefully in the future we can input distance instead of time
-		// and have the code work out the timeout value
+        // eg. requires(chassis
     	requires(Robot.driveTrain);
-    	setTimeout(T);
-    	this.speedF = speedF;
+    	setTimeout(15);
+    	this.left = left;
+    	this.right = right;
+    	fl = false; // the code constantly switches between turn and move with fl = !fl
+    	flg= false;
     	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.gyro.reset();
-    	
+    	SmartDashboard.putNumber("Gyro Angle", Robot.gyro.getAngle());
+		if (Robot.gyro.getAngle()<= -1){
+			flg = true;
+		}
+		if (Robot.gyro.getAngle()>= 1){
+			flg = false;
+		}
+		
+    	if (!fl){
+    		Robot.driveTrain.AutoDrive(speedF, 0);
+    	}
+    	else {
+
+   
+    		if (flg){
+    			Robot.driveTrain.AutoTurning(0, speedT - 0.002);
+    		}
+    		else{		
+    			Robot.driveTrain.AutoTurning(0, speedT);
+    		}
+    	}
+    	fl = !fl;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.TankStraight(speedF);
-    	SmartDashboard.putNumber("Gyro Angle", Robot.gyro.getAngle());
+    	Robot.gyro.getAngle();
     	
     }
 
@@ -52,6 +73,5 @@ public class CorrectingDriveAuto extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }

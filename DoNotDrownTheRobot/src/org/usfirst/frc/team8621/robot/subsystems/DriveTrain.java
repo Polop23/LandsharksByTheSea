@@ -78,6 +78,10 @@ public class DriveTrain extends Subsystem {
     	robotDrive.tankDrive(speedF* 1.04, speedF);
     }
     
+    public void TankStraight2(double left, double right) {
+    	robotDrive.tankDrive(left, right);
+    }
+    
     public void Stop() {
     	
     	robotDrive.arcadeDrive(0, 0);
