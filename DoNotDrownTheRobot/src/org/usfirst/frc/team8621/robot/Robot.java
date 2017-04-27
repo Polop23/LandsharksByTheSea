@@ -39,6 +39,8 @@ public class Robot extends IterativeRobot {
     public static final boolean FLM = false;
     public static final Roller Roller = new Roller();
 
+	public static final String DriveTrain = null;
+
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
