@@ -70,6 +70,7 @@ public class Robot extends IterativeRobot {
 	SmartDashboard.putNumber("Turn Damp", 0.5);
 	SmartDashboard.putNumber("Speed Damp", 0.5);
 	
+	
     }
 
     /**
@@ -139,7 +140,9 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
 
 	double gyroAngle = gyro.getAngle();
+	double time;
 	SmartDashboard.putNumber("Gyro Angle", gyroAngle);
+	SmartDashboard.putNumber("tike elaspsed", time);
 	// boolean FLMM = FLM.getBooleanProperty("FLM", fa
 	// SmartDashboard.putBoolean("Front Left Motor", value);
 	Scheduler.getInstance().run();
