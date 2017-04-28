@@ -13,7 +13,7 @@ public class DriveAndTurnV2 extends CommandGroup {
         //      addSequential(new Command2());
         // these will run in order.
     	
-    	addSequential(new CorrectingDriveAutoV2(.6, -0.2 , 13));
+    	addSequential(new CorrectingDriveAuto(.6, 10));
     	addSequential(new AutoTurningP(10));
 
         // To run multiple commands at the same time,

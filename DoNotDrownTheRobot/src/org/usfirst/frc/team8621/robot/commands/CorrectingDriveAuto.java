@@ -15,7 +15,7 @@ public class CorrectingDriveAuto extends Command {
     double speedF;
     double speedT;
     
-    public CorrectingDriveAuto(double speedF, double speedT, double T) {
+    public CorrectingDriveAuto(double speedF, double T) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 		// hopefully in the future we can input distance instead of time
@@ -23,38 +23,25 @@ public class CorrectingDriveAuto extends Command {
     	requires(Robot.driveTrain);
     	setTimeout(T);
     	this.speedF = speedF;
-    	this.speedT = speedT;
     	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.gyro.reset();
-    	fl = false; // true means it's in the process of turning, false means running
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	// IIRC the robot only diverges to the left, so I'm gonna be lazy here
+    	Robot.DriveTrain.TankStraight(speedF);
     	SmartDashboard.putNumber("Gyro Angle", Robot.gyro.getAngle());
-    	if (Robot.gyro.getAngle() <= -2){
-    		fl = true;
-    	}
-    	if (Robot.gyro.getAngle() >= 0.1){ //to compensate for gyro drift. Nope not good
-    		fl = false;
-    	}
-    	if (fl){
-    		Robot.driveTrain.AutoTurning(0, -0.3); //imo speedT should be a fixed value here
-    	}
-    	else if (!fl){
-    		Robot.driveTrain.AutoDrive(speedF, speedT);
-    	}
     	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return isTimedOut();
+        return isTimedOut() || Robot.gyro.getAngle > 2;
     }
 
     // Called once after isFinished returns true
