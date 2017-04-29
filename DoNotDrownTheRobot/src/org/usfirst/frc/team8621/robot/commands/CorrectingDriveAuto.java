@@ -34,14 +34,14 @@ public class CorrectingDriveAuto extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.DriveTrain.TankStraight(speedF);
+    	Robot.driveTrain.TankStraight(speedF);
     	SmartDashboard.putNumber("Gyro Angle", Robot.gyro.getAngle());
     	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return isTimedOut() || Robot.gyro.getAngle > 2;
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true

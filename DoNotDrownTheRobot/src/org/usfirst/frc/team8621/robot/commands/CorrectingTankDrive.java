@@ -5,18 +5,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class DriveAndTurnV2 extends CommandGroup {
+public class CorrectingTankDrive extends CommandGroup {
 
-    public DriveAndTurnV2() {
+    public CorrectingTankDrive() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    	
-
-    	addSequential(new CorrectingDriveAuto(.6, 10));
-
-    	addSequential(new AutoTurningP(10));
 
         // To run multiple commands at the same time,
         // use addParallel()
