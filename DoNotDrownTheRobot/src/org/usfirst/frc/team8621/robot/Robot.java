@@ -142,9 +142,9 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
 
 	double gyroAngle = gyro.getAngle();
-	double time;
+	double gyroRate = gyro.getRate();
 	SmartDashboard.putNumber("Gyro Angle", gyroAngle);
-	//SmartDashboard.putNumber("tike elaspsed", time);
+	SmartDashboard.putNumber("Gyro Rate", gyroRate);
 	// boolean FLMM = FLM.getBooleanProperty("FLM", fa
 	// SmartDashboard.putBoolean("Front Left Motor", value);
 	Scheduler.getInstance().run();
