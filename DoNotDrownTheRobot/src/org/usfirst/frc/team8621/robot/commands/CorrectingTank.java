@@ -30,6 +30,7 @@ public class CorrectingTank extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.gyro.reset();
     	SmartDashboard.putNumber("Gyro Angle", Robot.gyro.getAngle());
 		/*if (Robot.gyro.getAngle() >1){
 			flg = true;
@@ -57,6 +58,7 @@ public class CorrectingTank extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.gyro.getAngle();
+    	
     	
     }
 

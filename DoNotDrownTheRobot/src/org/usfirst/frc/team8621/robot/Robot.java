@@ -16,6 +16,7 @@ import org.usfirst.frc.team8621.robot.commands.CrazyTurning;
 import org.usfirst.frc.team8621.robot.commands.DriveAndTurnAuto;
 import org.usfirst.frc.team8621.robot.commands.DriveAndTurnV2;
 import org.usfirst.frc.team8621.robot.commands.DriveAuto;
+import org.usfirst.frc.team8621.robot.commands.TankDrive;
 import org.usfirst.frc.team8621.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team8621.robot.subsystems.Roller;
 
@@ -62,6 +63,7 @@ public class Robot extends IterativeRobot {
 	chooser.addObject("Drive and Turn", new DriveAndTurnAuto());
 	chooser.addObject("Drive and Turn Auto V2", new DriveAndTurnV2());
 	chooser.addObject("Crazy Turning", new CrazyTurning());
+	chooser.addObject("Correcting Tank", new TankDrive(.5, .5));
 	// chooser.addObject("My Auto", new MyAutoCommand());
 	
 	
