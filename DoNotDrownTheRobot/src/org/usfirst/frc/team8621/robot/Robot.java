@@ -12,10 +12,14 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team8621.robot.commands.AutoTurnLeftSixty;
+import org.usfirst.frc.team8621.robot.commands.AutoTurnRightSixty;
 import org.usfirst.frc.team8621.robot.commands.CrazyTurning;
 import org.usfirst.frc.team8621.robot.commands.DriveAndTurnAuto;
 import org.usfirst.frc.team8621.robot.commands.DriveAndTurnV2;
 import org.usfirst.frc.team8621.robot.commands.DriveAuto;
+import org.usfirst.frc.team8621.robot.commands.DriveTurnleftsixtyDrive;
+import org.usfirst.frc.team8621.robot.commands.DriveTurnrightsixtyDrive;
 import org.usfirst.frc.team8621.robot.commands.TankDrive;
 import org.usfirst.frc.team8621.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team8621.robot.subsystems.Roller;
@@ -64,6 +68,8 @@ public class Robot extends IterativeRobot {
 	chooser.addObject("Drive and Turn Auto V2", new DriveAndTurnV2());
 	chooser.addObject("Crazy Turning", new CrazyTurning());
 	chooser.addObject("Correcting Tank", new TankDrive(.5, .5));
+	chooser.addObject("Turn left 60 degrees", new DriveTurnleftsixtyDrive());
+	chooser.addObject("Turn Right by 60 degrees", new DriveTurnrightsixtyDrive());
 	// chooser.addObject("My Auto", new MyAutoCommand());
 	
 	
