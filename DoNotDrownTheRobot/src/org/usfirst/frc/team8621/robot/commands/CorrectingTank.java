@@ -16,13 +16,13 @@ public class CorrectingTank extends Command {
 	double right;
 	
 
-    public CorrectingTank(double left, double right) {
+    public CorrectingTank(/*double left, double right*/) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis
-    	requires(Robot.driveTrain);
+    	//requires(Robot.driveTrain);
     	setTimeout(15);
-    	this.left = left;
-    	this.right = right;
+    	//this.left = left;
+    	//this.right = right;
     	fl = false; // the code constantly switches between turn and move with fl = !fl
     	flg= false;
     	
@@ -30,8 +30,9 @@ public class CorrectingTank extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.gyro.reset();
     	SmartDashboard.putNumber("Gyro Angle", Robot.gyro.getAngle());
-		if (Robot.gyro.getAngle()<= -1){
+		/*if (Robot.gyro.getAngle() >1){
 			flg = true;
 		}
 		if (Robot.gyro.getAngle()>= 1){
@@ -51,12 +52,13 @@ public class CorrectingTank extends Command {
     			Robot.driveTrain.AutoTurning(0, speedT);
     		}
     	}
-    	fl = !fl;
+    	fl = !fl;*/
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.gyro.getAngle();
+    	
     	
     }
 
