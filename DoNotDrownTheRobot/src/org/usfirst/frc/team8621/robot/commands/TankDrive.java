@@ -28,8 +28,8 @@ public class TankDrive extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.gyro.reset();
-    	//left = .5;
-    	//right = .5;
+    	left = .5;
+    	right = .5;
     	Robot.driveTrain.TankStraight2(left, right);
     	correct = false;
     	incorrectLeft = false;
@@ -41,32 +41,33 @@ public class TankDrive extends Command {
     protected void execute() {
     	//TODO: replace with calculated rate
     	//TODO: Have a low margin very low 
-    	if (Robot.gyro.getRate() <= 5/*calculated rate-.5*margin*/ && Robot.gyro.getAngle() >= 4/*Calculated rate + .5*margin*/) {
+    	if (Robot.gyro.getAngle() <= 0.25/*calculated rate-.5*margin*/ && Robot.gyro.getAngle() >= -0.25/*Calculated rate + .5*margin*/) {
     		correct = true;
     	} else { 
     		correct = false;
     	}
-    	if (correct = true) { 
+    	if (correct == true) { 
     		right = right;
     		//Robot.driveTrain.TankStraight2(left, right);
     	}
-    	if (Robot.gyro.getRate() < 5/*calculated rate*/) {
+    	if (Robot.gyro.getAngle() < -0.25/*calculated rate*/) {
     		incorrectLeft = true;
     	} else {
     		incorrectLeft = false;
     	}
-    	if (Robot.gyro.getRate() > 5/*calculated rate*/) {
+    	if (Robot.gyro.getAngle() > 0.25/*calculated rate*/) {
     		incorrectRight = true;
     	} else {
     		incorrectRight = false;
     	}
-    	if (incorrectLeft = true) {
-    		right = (right*.9);
+    	if (incorrectLeft == true) {
+    		right = (right*.999);
     	}
-    	if (incorrectRight = true) {
-    		right = (right*1.1);
+    	if (incorrectRight == true) {
+    		right = (right*1.001);
     	}
     	SmartDashboard.putNumber("right power", right);
+    	SmartDashboard.putNumber("Gyro Angle", Robot.gyro.getAngle());
     	Robot.driveTrain.TankStraight2(left, right);
     }
 

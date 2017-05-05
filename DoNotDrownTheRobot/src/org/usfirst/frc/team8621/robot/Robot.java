@@ -23,6 +23,8 @@ import org.usfirst.frc.team8621.robot.commands.DriveTurnrightsixtyDrive;
 import org.usfirst.frc.team8621.robot.commands.TankDrive;
 import org.usfirst.frc.team8621.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team8621.robot.subsystems.Roller;
+import java.lang.System.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -45,6 +47,7 @@ public class Robot extends IterativeRobot {
     public static final Roller Roller = new Roller();
 
 	public static final String DriveTrain = null;
+	private static long startTime;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -54,6 +57,8 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 	oi = new OI();
 	gyro.calibrate();
+	startTime = System.currentTimeMillis();
+	SmartDashboard.putString("Time Elapsed", getFormattedTime(0) );
 
 	UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
 	camera.setResolution(1280, 720);	
@@ -153,9 +158,13 @@ public class Robot extends IterativeRobot {
 	double gyroRate = gyro.getRate();
 	SmartDashboard.putNumber("Gyro Angle", gyroAngle);
 	SmartDashboard.putNumber("Gyro Rate", gyroRate);
+	long passedTime = startTime - System.currentTimeMillis();
+	SmartDashboard.putString("Time Elapsed", getFormattedTime(passedTime));
 	// boolean FLMM = FLM.getBooleanProperty("FLM", fa
 	// SmartDashboard.putBoolean("Front Left Motor", value);
 	Scheduler.getInstance().run();
+	
+	
 
     }
 
@@ -166,4 +175,14 @@ public class Robot extends IterativeRobot {
     public void testPeriodic() {
 	LiveWindow.run();
     }
+    
+    public static String getFormattedTime(long millis){
+    	long minutes = TimeUnit.MILLISECONDS.toMinutes(millis);
+    	long seconds = TimeUnit.MILLISECONDS.toSeconds(millis) -
+    				   TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis));
+    	long millisecs = millis - TimeUnit.SECONDS.toMillis(TimeUnit.MILLISECONDS.toSeconds(millis));
+    	return minutes + ":" + seconds + ":" + millisecs; 
+    }
+    
 }
+
