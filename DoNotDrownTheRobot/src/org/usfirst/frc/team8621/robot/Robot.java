@@ -23,6 +23,7 @@ import org.usfirst.frc.team8621.robot.commands.DriveTurnrightsixtyDrive;
 import org.usfirst.frc.team8621.robot.commands.TankDrive;
 import org.usfirst.frc.team8621.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team8621.robot.subsystems.Roller;
+import org.usfirst.frc.team8621.robot.subsystems.GearArm;
 import java.lang.System.*;
 import java.util.concurrent.TimeUnit;
 
@@ -45,6 +46,7 @@ public class Robot extends IterativeRobot {
     public static final ADXRS450_Gyro gyro = new ADXRS450_Gyro();
     public static final boolean FLM = false;
     public static final Roller Roller = new Roller();
+    public static final GearArm GearArm = new GearArm();
 
 	public static final String DriveTrain = null;
 	private static long startTime;
