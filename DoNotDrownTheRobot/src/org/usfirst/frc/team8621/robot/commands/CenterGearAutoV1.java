@@ -12,6 +12,7 @@ public class CenterGearAutoV1 extends CommandGroup {
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
+    	addSequential(new GearMove(1));
     	addSequential(new TankDrive(.5, .5));
     	addSequential(new PlaceGear());
 
