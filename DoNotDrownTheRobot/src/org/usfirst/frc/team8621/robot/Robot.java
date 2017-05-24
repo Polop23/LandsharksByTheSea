@@ -87,6 +87,7 @@ public class Robot extends IterativeRobot {
 	SmartDashboard.putNumber("Turn Damp", 0.5);
 	SmartDashboard.putNumber("Speed Damp", 0.5);
 	SmartDashboard.putNumber("Roller Speed", .3);
+	SmartDashboard.putNumber("test time", 3);
 	
 	
     }

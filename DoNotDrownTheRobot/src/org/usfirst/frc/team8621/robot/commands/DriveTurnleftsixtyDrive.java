@@ -14,6 +14,7 @@ public class DriveTurnleftsixtyDrive extends CommandGroup {
         // these will run in order.
     	addSequential(new TankDrive(0.5, 0.5));
     	addSequential(new AutoTurnLeftSixty(9));
+    	addSequential(new Pause(0.5));
     	addSequential(new TankDrive(0.5, 0.5));
         // To run multiple commands at the same time,
         // use addParallel()

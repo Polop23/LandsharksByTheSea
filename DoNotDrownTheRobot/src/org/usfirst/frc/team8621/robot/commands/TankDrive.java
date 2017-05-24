@@ -15,12 +15,12 @@ public class TankDrive extends Command {
 	boolean correct;
 	boolean incorrectLeft;
 	boolean incorrectRight;
+	double t;
 	
     public TankDrive(double left, double right) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.driveTrain);
-    	setTimeout(5);
     	this.left = left;
     	this.right = right;
     }
@@ -28,8 +28,11 @@ public class TankDrive extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.gyro.reset();
+    	// Robot.gyro.calibrate();
     	left = .5;
     	right = .5;
+    	t = SmartDashboard.getNumber("test time", 3);
+    	setTimeout(t);
     	Robot.driveTrain.TankStraight2(left, right);
     	correct = false;
     	incorrectLeft = false;

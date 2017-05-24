@@ -29,13 +29,13 @@ public class GearArm extends Subsystem {
     	
     }
     
-    public void gearMoveWithJoystick(XboxController xboxController1) {
+    public void gearMoveWithJoystick(XboxController xboxController1) { // manual
     	speed = .3*xboxController1.getY(Hand.kRight);
     	gearMotor.setSpeed(speed);
     	
     }
     
-    public void gearMove(double speed) {
+    public void gearMove(double speed) { // auto
     	gearMotor.setSpeed(speed);
     }
     
