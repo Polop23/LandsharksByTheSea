@@ -3,6 +3,7 @@ package org.usfirst.frc.team8621.robot.commands;
 import org.usfirst.frc.team8621.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -20,6 +21,7 @@ public class RollerMove extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	speed = SmartDashboard.getNumber("Roller Speeed",0.3);
 	Robot.Roller.rollerMove(speed);
     }
 
