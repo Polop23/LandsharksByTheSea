@@ -22,9 +22,12 @@ public class DriveTrainControllerDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-	Robot.driveTrain.DriveWithController(OI.xboxController0);
+    	Robot.driveTrain.DriveWithJoystick(OI.joystick);
     }
-
+    
+   /* protected void bob() {
+    	Robot.driveTrain.DriveWithJoystick(OI.xboxController0);
+    }*/
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
 	return false;

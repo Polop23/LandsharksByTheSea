@@ -1,9 +1,12 @@
 package org.usfirst.frc.team8621.robot;
 
 import org.usfirst.frc.team8621.robot.commands.AutoTurningWithAntonsPID;
+import org.usfirst.frc.team8621.robot.commands.GearIntakeRun;
 import org.usfirst.frc.team8621.robot.commands.GryoCalibration;
+import org.usfirst.frc.team8621.robot.commands.PlaceGear;
 import org.usfirst.frc.team8621.robot.commands.RollerMove;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -16,7 +19,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class OI {
 
     //This is primary driving controller
-	public static XboxController xboxController0 = new XboxController(0);
+	//public static XboxController xboxController0 = new XboxController(0);
     //This is secondary control controller for manipulation functions
 	public static XboxController xboxController1 = new XboxController(1);
     //TODO:Please comment which button and which controller your button function uses
@@ -24,17 +27,27 @@ public class OI {
     Button button16 = new JoystickButton(xboxController1, 6);
     //Right Bumper controller 1
     Button button15 = new JoystickButton(xboxController1, 5);
+    Button button17 = new JoystickButton(joystick, 11);
+    
     //Y or triangle button controller 0
-    Button button04 = new JoystickButton(xboxController0, 4);
+    Button button04 = new JoystickButton(xboxController1, 4);
     //x or X button controller 0
-    Button button03 = new JoystickButton(xboxController0, 3);
+    Button button03 = new JoystickButton(xboxController1, 3);
+    
+    Button button05 = new JoystickButton(xboxController1, 2);
+    
+    public static Joystick joystick = new Joystick(0);
+    //Button button04 = new JoystickButton(joystick, 3);
+    //Button button03 = new JoystickButton(joystick, 1);
     
 
     public OI() {
-	button16.whileHeld(new RollerMove(.8));
-	button15.whileHeld(new RollerMove(-.8));
-	button04.whenPressed(new AutoTurningWithAntonsPID(0,1));
-	button03.whenPressed(new GryoCalibration());
+	button16.whileHeld(new RollerMove(-.5));
+	button15.whileHeld(new RollerMove(-1));
+	button04.whenPressed(new GearIntakeRun(1));
+	button03.whenPressed(new GearIntakeRun(-1));
+	button05.whenPressed(new GearIntakeRun(0));
+	button17.whenPressed(new PlaceGear());
 	
 	
     }
@@ -67,3 +80,4 @@ public class OI {
 // Start the command when the button is released and let it run the command
 // until it is finished as determined by it's isFinished method.
 // button.whenReleased(new ExampleCommand());
+

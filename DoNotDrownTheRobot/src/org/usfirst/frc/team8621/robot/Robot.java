@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team8621.robot.commands.AutoTurnLeftSixty;
 import org.usfirst.frc.team8621.robot.commands.AutoTurnRightSixty;
+import org.usfirst.frc.team8621.robot.commands.CenterGearAutoV1;
 import org.usfirst.frc.team8621.robot.commands.CrazyTurning;
 import org.usfirst.frc.team8621.robot.commands.DriveAndTurnAuto;
 import org.usfirst.frc.team8621.robot.commands.DriveAndTurnV2;
@@ -24,6 +25,7 @@ import org.usfirst.frc.team8621.robot.commands.TankDrive;
 import org.usfirst.frc.team8621.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team8621.robot.subsystems.Roller;
 import org.usfirst.frc.team8621.robot.subsystems.GearArm;
+import org.usfirst.frc.team8621.robot.subsystems.GearIntake;
 import java.lang.System.*;
 import java.util.concurrent.TimeUnit;
 
@@ -47,6 +49,7 @@ public class Robot extends IterativeRobot {
     public static final boolean FLM = false;
     public static final Roller Roller = new Roller();
     public static final GearArm GearArm = new GearArm();
+    public static final GearIntake GearIntake = new GearIntake();
 
 	public static final String DriveTrain = null;
 	private static long startTime;
@@ -73,7 +76,7 @@ public class Robot extends IterativeRobot {
 	chooser.addObject("BaselineAuto", new DriveAuto(.5, 0, 5));
 	chooser.addObject("Drive and Turn", new DriveAndTurnAuto());
 	chooser.addObject("Drive and Turn Auto V2", new DriveAndTurnV2());
-	chooser.addObject("Crazy Turning", new CrazyTurning());
+	chooser.addObject("Centergear", new CenterGearAutoV1());
 	chooser.addObject("Correcting Tank", new TankDrive(.5, .5));
 	chooser.addObject("Turn left 60 degrees", new DriveTurnleftsixtyDrive());
 	chooser.addObject("Turn Right by 60 degrees", new DriveTurnrightsixtyDrive());

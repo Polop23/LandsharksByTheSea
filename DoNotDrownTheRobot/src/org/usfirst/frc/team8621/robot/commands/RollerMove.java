@@ -21,7 +21,7 @@ public class RollerMove extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	speed = SmartDashboard.getNumber("Roller Speeed",0.3);
+    	//speed = SmartDashboard.getNumber("Roller Speeed",0.3);
 	Robot.Roller.rollerMove(speed);
     }
 
