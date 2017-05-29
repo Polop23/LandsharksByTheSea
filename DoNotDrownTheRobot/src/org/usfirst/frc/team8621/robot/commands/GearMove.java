@@ -15,6 +15,7 @@ public class GearMove extends Command {
         // eg. requires(chassis);
     	this.T = T;
     	requires(Robot.GearArm);
+    	setTimeout(T);
     }
 
     // Called just before this Command runs the first time
