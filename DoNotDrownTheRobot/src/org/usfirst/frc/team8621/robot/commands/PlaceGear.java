@@ -13,8 +13,8 @@ public class PlaceGear extends CommandGroup {
         //      addSequential(new Command2());
         // these will run in order.
     	
-    	addParallel(new GearMove(.1));
-    	addParallel(new DriveAuto(-.2,0,5));
+    	addSequential(new GearMove(1.3));
+    	addSequential(new DriveAuto(-.4,0,5));
 
         // To run multiple commands at the same time,
         // use addParallel()
