@@ -28,5 +28,8 @@ public class RobotMap {
     public static int gearMotor = 5 ;
     public static int gearIntake = 6;
     
+    public static int gearEncoderChannelA = 0;
+    public static int gearEncoderChannelB = 1;
+    
 }
  
