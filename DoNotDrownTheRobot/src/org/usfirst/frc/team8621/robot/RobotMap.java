@@ -27,4 +27,7 @@ public class RobotMap {
     public static int rollerMotor = 3;
     public static int gearMotor = 5 ;
     
+    public static int gearEncoderChannelA = 0;
+    public static int gearEncoderChannelB = 1;
+    
 }
