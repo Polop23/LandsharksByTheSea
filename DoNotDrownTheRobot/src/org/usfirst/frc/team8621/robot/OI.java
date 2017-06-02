@@ -1,6 +1,7 @@
 package org.usfirst.frc.team8621.robot;
 
 import org.usfirst.frc.team8621.robot.commands.AutoTurningWithAntonsPID;
+import org.usfirst.frc.team8621.robot.commands.GearEncoderMove;
 //import org.usfirst.frc.team8621.robot.commands.GearIntakeRun;
 import org.usfirst.frc.team8621.robot.commands.GryoCalibration;
 import org.usfirst.frc.team8621.robot.commands.PlaceGear;
@@ -38,14 +39,14 @@ public class OI {
     
     public static Joystick joystick = new Joystick(0);
     //Button button04 = new JoystickButton(joystick, 3);
-    //Button button03 = new JoystickButton(joystick, 1);
+    Button button01 = new JoystickButton(xboxController1, 1);
     
 
     public OI() {
 	button16.whileHeld(new RollerMove(-.5));
 	button15.whileHeld(new RollerMove(-1));
 	//button04.whenPressed(new GearIntakeRun(1));
-	//button03.whenPressed(new GearIntakeRun(-1));
+	button01.whileHeld(new GearEncoderMove());
 	//button05.whenPressed(new GearIntakeRun(0));
 	button17.whenPressed(new PlaceGear());
 	

@@ -5,14 +5,15 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class CenterGearAutoV1 extends CommandGroup {
+public class CenterGearAutoV2 extends CommandGroup {
 
-    public CenterGearAutoV1() {
+    public CenterGearAutoV2() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    	addSequential(new GearMove(.375));
+    	
+    	addParallel(new GearEncoderMove());
     	addSequential(new TankDrive(.5, .5, 3));
     	addSequential(new PlaceGear());
 

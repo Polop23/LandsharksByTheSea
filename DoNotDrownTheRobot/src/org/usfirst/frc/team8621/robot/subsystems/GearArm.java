@@ -25,7 +25,8 @@ public class GearArm extends PIDSubsystem {
 		super("GearArm", 1.0, 0.0, 0.0);
 		gearMotor = new VictorSP(RobotMap.gearMotor);
 		gearEnc = new Encoder(RobotMap.gearEncoderChannelA, RobotMap.gearEncoderChannelB);
-		//setContinuous
+		getPIDController().setContinuous(false);
+		setSetpoint(127);
 	}
 
     public void initDefaultCommand() {
