@@ -13,8 +13,8 @@ public class DriveTurnrightsixtyDrive extends CommandGroup {
         //      addSequential(new Command2());
         // these will run in order.
     	addParallel(new GearEncoderMove());
-    	addSequential(new TankDrive(0.5, 0.5, 3));
-    	addSequential(new AutoTurnRightSixty(9));
+    	addSequential(new TankDrive(0.5, 0.5, 4));
+    	addSequential(new AutoTurnRightSixty(4));
     	addSequential(new Pause(0.5));
     	addSequential(new TankDrive(0.5, 0.5, 2));
     	addSequential(new PlaceGear());

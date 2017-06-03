@@ -19,7 +19,7 @@ public class AutoTurnLeftSixty extends Command {
     public AutoTurnLeftSixty(double timeOut) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	SmartDashboard.putNumber("Kp", Kp);
+    	//SmartDashboard.putNumber("Kp", Kp);
         // Use requires() here to declare subsystem dependencies
         requires(Robot.driveTrain);
         setTimeout(timeOut);
@@ -36,9 +36,9 @@ public class AutoTurnLeftSixty extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	SmartDashboard.putNumber("Gyro Angle", Robot.gyro.getAngle());
-    	Kp = SmartDashboard.getNumber("Kp", Kp);
+    	//Kp = SmartDashboard.getNumber("Kp", Kp);
     	error = Math.sqrt((turnAngle - Robot.gyro.getAngle())/turnAngle);
-    	setSpeed = Math.abs(Kp * (error));
+    	setSpeed = Math.abs((Kp * (error))+.2);
     	
     	if (Math.abs(Robot.gyro.getAngle() - turnAngle) >= 1){
     		if (Math.abs(setSpeed) > 0.4){
