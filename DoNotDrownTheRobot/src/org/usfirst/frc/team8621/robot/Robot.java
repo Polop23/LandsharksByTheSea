@@ -22,11 +22,12 @@ import org.usfirst.frc.team8621.robot.commands.DriveAndTurnV2;
 import org.usfirst.frc.team8621.robot.commands.DriveAuto;
 import org.usfirst.frc.team8621.robot.commands.DriveTurnleftsixtyDrive;
 import org.usfirst.frc.team8621.robot.commands.DriveTurnrightsixtyDrive;
+import org.usfirst.frc.team8621.robot.commands.MathPIDTurn;
 import org.usfirst.frc.team8621.robot.commands.TankDrive;
 import org.usfirst.frc.team8621.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team8621.robot.subsystems.Roller;
 import org.usfirst.frc.team8621.robot.subsystems.GearArm;
-//import org.usfirst.frc.team8621.robot.subsystems.GearIntake;
+import org.usfirst.frc.team8621.robot.subsystems.DriveTrainPID;
 import java.lang.System.*;
 import java.util.concurrent.TimeUnit;
 
@@ -50,6 +51,7 @@ public class Robot extends IterativeRobot {
     public static final boolean FLM = false;
     public static final Roller Roller = new Roller();
     public static final GearArm GearArm = new GearArm();
+    public static final DriveTrainPID DriveTrainPID = new DriveTrainPID();
     //public static final GearIntake GearIntake = new GearIntake();
 
 	public static final String DriveTrain = null;
@@ -82,6 +84,7 @@ public class Robot extends IterativeRobot {
 	chooser.addObject("Turn left 60 degrees", new DriveTurnleftsixtyDrive());
 	chooser.addObject("Turn Right by 60 degrees", new DriveTurnrightsixtyDrive());
 	chooser.addObject("CentergearV2", new CenterGearAutoV2());
+	chooser.addObject("Anton Math Auto", new MathPIDTurn());
 	// chooser.addObject("My Auto", new MyAutoCommand());
 	
 	
