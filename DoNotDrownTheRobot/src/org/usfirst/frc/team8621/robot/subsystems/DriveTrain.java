@@ -29,12 +29,12 @@ public class DriveTrain extends Subsystem {
      double speedDamp;
 
     public DriveTrain() {
-	frontLeftMotor = new VictorSP(RobotMap.frontLeftMotor); //whats plugged in victor 0
+	/*frontLeftMotor = new VictorSP(RobotMap.frontLeftMotor); //whats plugged in victor 0
 	frontRightMotor = new VictorSP(RobotMap.frontRightMotor); //ditto 1
 	backLeftMotor = new VictorSP(RobotMap.backLeftMotor); //ditto 2
 	backRightMotor = new VictorSP(RobotMap.backRightMotor); //ditto 3
 		robotDrive = new RobotDrive(frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor);
-
+*/
 	// roborDrive.setSafetyEnabled(false); if needed to stop jumpyness
 
     }
@@ -45,7 +45,7 @@ public class DriveTrain extends Subsystem {
 	// Set the default command for a subsystem here.
 	// setDefaultCommand(new MySpecialCommand());
 
-	setDefaultCommand(new DriveTrainControllerDrive());
+	//setDefaultCommand(new DriveTrainControllerDrive());
 
     }
 

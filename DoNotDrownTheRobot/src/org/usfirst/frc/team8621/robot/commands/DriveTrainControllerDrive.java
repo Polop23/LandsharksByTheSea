@@ -13,7 +13,8 @@ public class DriveTrainControllerDrive extends Command {
     public DriveTrainControllerDrive() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
-	requires(Robot.driveTrain);
+	//requires(Robot.driveTrain);
+	requires(Robot.DriveTrainPID);
     }
 
     // Called just before this Command runs the first time
@@ -22,7 +23,8 @@ public class DriveTrainControllerDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.DriveWithJoystick(OI.joystick);
+    	//Robot.driveTrain.DriveWithJoystick(OI.joystick);
+    	Robot.DriveTrainPID.DriveWithJoystick(OI.joystick);
     }
     
    /* protected void bob() {

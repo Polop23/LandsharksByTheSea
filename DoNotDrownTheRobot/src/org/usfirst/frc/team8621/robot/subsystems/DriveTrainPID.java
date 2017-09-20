@@ -28,23 +28,25 @@ public class DriveTrainPID extends PIDSubsystem {
 	    
 	    double turnDamp;
 	     double speedDamp;
+	     double output;
 
     // Initialize your subsystem here
     public DriveTrainPID() {
     	
-    	super("DriveTrainPID", 1.0, 0.0, 0.0);
+    	super("DriveTrainPID", 4.0, 0.0, 0.0);
     	frontLeftMotor = new VictorSP(RobotMap.frontLeftMotor); //whats plugged in victor 0
     	frontRightMotor = new VictorSP(RobotMap.frontRightMotor); //ditto 1
     	backLeftMotor = new VictorSP(RobotMap.backLeftMotor); //ditto 2
     	backRightMotor = new VictorSP(RobotMap.backRightMotor); //ditto 3
     	robotDrive = new RobotDrive(frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor);
-        gyro = new ADXRS450_Gyro();
+        //gyro = new ADXRS450_Gyro();
     	// Use these to get going:
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to
         // enable() - Enables the PID controller.
-    	getPIDController().setContinuous(true);
-    	setSetpoint(127);
+    	enable();
+    	getPIDController().setContinuous(false);
+    	setSetpoint(90);
     }
 
     public void initDefaultCommand() {
@@ -78,13 +80,17 @@ public class DriveTrainPID extends PIDSubsystem {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
-        return gyro.getAngle();
+        return this.gyro.getAngle();
     }
 
     public void usePIDOutput(double output) {
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
     	this.robotDrive.arcadeDrive(0, output);
+    	this.output = output;
+    	
     }
-    //public void 
+    public void drive(){
+    	robotDrive.arcadeDrive(0, output);
+    }
 }

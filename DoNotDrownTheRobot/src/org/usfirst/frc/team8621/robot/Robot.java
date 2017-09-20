@@ -147,6 +147,8 @@ public class Robot extends IterativeRobot {
      */
     @Override
     public void autonomousPeriodic() {
+    	double x = Robot.gyro.getAngle();
+    	System.out.print(x);
 	Scheduler.getInstance().run();
     }
 

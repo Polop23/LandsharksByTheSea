@@ -16,26 +16,33 @@ public class MathPIDTurn extends Command {
     public MathPIDTurn() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.DriveTrainPID);
+    	//requires(Robot.DriveTrainPID);
     	setTimeout(10);
     	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.DriveTrainPID.usePIDOutput(output);
+    	Robot.gyro.reset();
+    	Robot.DriveTrainPID.drive();
     	SmartDashboard.putNumber("Gyro Angle", Robot.gyro.getAngle());
+    	SmartDashboard.putNumber("PID VALUE" , output);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	SmartDashboard.putNumber("Gyro Angle", Robot.gyro.getAngle());
+    	//SmartDashboard.putNumber("Gyro Angle", Robot.gyro.getAngle());
     	SmartDashboard.putNumber("Gyro Angles", Robot.gyro.pidGet());
-    	Robot.gyro.startLiveWindowMode();
+    	SmartDashboard.putNumber("Angle", Robot.gyro.getAngle());
+    	//Robot.gyro.getPID();
+    	Robot.DriveTrainPID.getPIDController();
+    	
+    	Robot.DriveTrainPID.AutoPID(0,  Robot.gyro.pidGet());
+    	//Robot.gyro.startLiveWindowMode();
     	x=Robot.gyro.getAngle();
     	System.out.print(x);
-    	System.out.print(y);
-    	System.out.print(z);
+    	//System.out.print(y);
+    	//System.out.print(z);
     	
     	
     }
@@ -47,8 +54,8 @@ public class MathPIDTurn extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.gyro.stopLiveWindowMode();
-    	Robot.DriveTrainPID.Stop();
+    	//Robot.gyro.stopLiveWindowMode();
+    	//Robot.DriveTrainPID.Stop();
     }
 
     // Called when another command which requires one or more of the same
