@@ -11,38 +11,49 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class MathPIDTurn extends Command {
 
 	double output;
+	double error;
+	double error_prior;
+	double integral;
+	double KI;
+	double KP;
+	double KD;
+	double derivative;
 	double x,y,z;
+	double speedT;
 	
     public MathPIDTurn() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	//requires(Robot.DriveTrainPID);
+    	requires(Robot.driveTrain);
     	setTimeout(10);
+    	output = 1;
+    	integral = 0;
+    	error_prior = 0;
+    	KP = SmartDashboard.getNumber("KP",1);
+    	KI = SmartDashboard.getNumber("KI", 1);
+    	KD = SmartDashboard.getNumber("KD", 1);
+    	
     	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.gyro.reset();
-    	Robot.DriveTrainPID.drive();
-    	SmartDashboard.putNumber("Gyro Angle", Robot.gyro.getAngle());
-    	SmartDashboard.putNumber("PID VALUE" , output);
+    	Robot.driveTrain.DriveWithPID(output);
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	//SmartDashboard.putNumber("Gyro Angle", Robot.gyro.getAngle());
-    	SmartDashboard.putNumber("Gyro Angles", Robot.gyro.pidGet());
-    	SmartDashboard.putNumber("Angle", Robot.gyro.getAngle());
-    	//Robot.gyro.getPID();
-    	Robot.DriveTrainPID.getPIDController();
+    	error = 90 - Robot.gyro.getAngle();
+    	integral = integral + (error*0.02);
+    	derivative = (error - error_prior)/0.02;
+    	output = KP*error + KI*integral + KD*derivative;
+    	error_prior = error;
     	
-    	Robot.DriveTrainPID.AutoPID(0,  Robot.gyro.pidGet());
-    	//Robot.gyro.startLiveWindowMode();
-    	x=Robot.gyro.getAngle();
-    	System.out.print(x);
-    	//System.out.print(y);
-    	//System.out.print(z);
+    	Robot.driveTrain.DriveWithPID(output);
+    	
+    	
     	
     	
     }
@@ -54,8 +65,8 @@ public class MathPIDTurn extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	//Robot.gyro.stopLiveWindowMode();
-    	//Robot.DriveTrainPID.Stop();
+    	Robot.driveTrain.Stop();
+    	
     }
 
     // Called when another command which requires one or more of the same

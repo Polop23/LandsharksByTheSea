@@ -44,9 +44,10 @@ public class DriveTrainPID extends PIDSubsystem {
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to
         // enable() - Enables the PID controller.
-    	enable();
+    	
     	getPIDController().setContinuous(false);
     	setSetpoint(90);
+    	enable();
     }
 
     public void initDefaultCommand() {

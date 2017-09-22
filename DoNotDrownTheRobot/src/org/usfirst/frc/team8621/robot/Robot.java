@@ -29,7 +29,12 @@ import org.usfirst.frc.team8621.robot.subsystems.Roller;
 import org.usfirst.frc.team8621.robot.subsystems.GearArm;
 import org.usfirst.frc.team8621.robot.subsystems.DriveTrainPID;
 import java.lang.System.*;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -51,11 +56,14 @@ public class Robot extends IterativeRobot {
     public static final boolean FLM = false;
     public static final Roller Roller = new Roller();
     public static final GearArm GearArm = new GearArm();
-    public static final DriveTrainPID DriveTrainPID = new DriveTrainPID();
+    //public static final DriveTrainPID DriveTrainPID = new DriveTrainPID();
     //public static final GearIntake GearIntake = new GearIntake();
 
 	public static final String DriveTrain = null;
 	private static long startTime;
+	File f;
+	BufferedWriter bw;
+	FileWriter fw;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -88,14 +96,26 @@ public class Robot extends IterativeRobot {
 	// chooser.addObject("My Auto", new MyAutoCommand());
 	
 	
-	//SmartDashboard.putNumber("Turning Angle", 90);
-	//SmartDashboard.putNumber("Speed forward", 0.5);
-	//SmartDashboard.putNumber("Speed Backward", 0.5);
+	SmartDashboard.putNumber("KI", 1);
+	SmartDashboard.putNumber("KP", 1);
+	SmartDashboard.putNumber("KD", 1);
 	SmartDashboard.putNumber("Time", .5);
 	SmartDashboard.putNumber("Turn Damp", 0.5);
 	SmartDashboard.putNumber("Speed Damp", 0.5);
 	//SmartDashboard.putNumber("Roller Speed", .3);
 	SmartDashboard.putNumber("test time", 3);
+	try {
+		Map<String, String> env = System.getenv();
+		f = new File(env.get("HOME") + "/Output.txt");
+		if(!f.exists()){
+			f.createNewFile();
+		}
+		fw = new FileWriter(f);
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	bw = new BufferedWriter(fw);
 	
 	
     }

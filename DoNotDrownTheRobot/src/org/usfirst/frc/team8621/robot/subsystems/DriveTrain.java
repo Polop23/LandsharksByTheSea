@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.XboxController;
 //import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -29,12 +30,12 @@ public class DriveTrain extends Subsystem {
      double speedDamp;
 
     public DriveTrain() {
-	/*frontLeftMotor = new VictorSP(RobotMap.frontLeftMotor); //whats plugged in victor 0
+	frontLeftMotor = new VictorSP(RobotMap.frontLeftMotor); //whats plugged in victor 0
 	frontRightMotor = new VictorSP(RobotMap.frontRightMotor); //ditto 1
 	backLeftMotor = new VictorSP(RobotMap.backLeftMotor); //ditto 2
 	backRightMotor = new VictorSP(RobotMap.backRightMotor); //ditto 3
 		robotDrive = new RobotDrive(frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor);
-*/
+
 	// roborDrive.setSafetyEnabled(false); if needed to stop jumpyness
 
     }
@@ -45,7 +46,7 @@ public class DriveTrain extends Subsystem {
 	// Set the default command for a subsystem here.
 	// setDefaultCommand(new MySpecialCommand());
 
-	//setDefaultCommand(new DriveTrainControllerDrive());
+	setDefaultCommand(new DriveTrainControllerDrive());
 
     }
 
@@ -56,7 +57,7 @@ public class DriveTrain extends Subsystem {
      * 0){ return true; }else{ return false; } }
      */
     //TODO: funtions dont start with capitals
-   /* public void DriveWithController(XboxController xboxController) {
+    public void DriveWithController(XboxController xboxController) {
 
 	turnDamp = SmartDashboard.getNumber("Turn Damp", 0.5);
 	speedDamp = SmartDashboard.getNumber("Speed Damp", 0.5);
@@ -66,7 +67,7 @@ public class DriveTrain extends Subsystem {
     
 	robotDrive.arcadeDrive(speedF, speedT, true);
 
-    }*/
+    }
     
     public void DriveWithJoystick (Joystick joystick) {
     
@@ -93,6 +94,11 @@ public class DriveTrain extends Subsystem {
     
     public void TankStraight2(double left, double right) {
     	robotDrive.tankDrive(left, right);
+    }
+    
+    public void DriveWithPID( double output) {
+    	speedT = output;
+    	robotDrive.tankDrive(0, speedT);
     }
     
     public void Stop() {
